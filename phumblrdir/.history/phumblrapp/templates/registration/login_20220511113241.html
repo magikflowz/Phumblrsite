@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login</title>
+</head>
+<body>
+    <style>
+        style1 {
+            background: url(https://images.unsplash.com/18/trickle.JPG?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1074&q=80) no-repeat center center fixed;
+            -webkit-background-size: cover;
+            -moz-background-size: cover;
+            -o-background-size: cover;
+            background-size: cover;
+          }
+    </style>
+
+    {% if form.errors. %}
+    <p>There something wrong with what you entered</p>
+    {% endif %}
+
+    {% if next %}
+    <p>Hey, you can't access that page</p>
+    {% endif %}
+
+    <form method="post" action="{% url 'login' %}">
+        {% csrf_token %}
+        
+        <p>Username: {{ form.username }}</p>
+        <p>Password: {{ form.password }}</p>
+
+        <input type="submit"=value="login">
+        <input type="hidden" name="next" value="{{ next }}">
+    </form>
+</body>
+</html>
